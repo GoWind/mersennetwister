@@ -1,3 +1,4 @@
+extern crate mt;
 use std::num::Wrapping;
 struct MT {
     state : [u64; 624],
