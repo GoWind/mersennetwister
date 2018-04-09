@@ -59,6 +59,11 @@ impl MT {
         l
     }
 
+    fn get_real(self: &mut MT) -> f32 {
+        let g = self.get();
+        (g as f32) * (1.0f32/4294967296.0f32)
+    }
+
 
 
 
@@ -70,6 +75,8 @@ fn main() {
     for i in 0..650 {
         
         let k = y.get();
+        println!("{}", k);
+        let k = y.get_real();
         println!("{}", k);
         }
 }
