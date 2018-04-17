@@ -1,11 +1,17 @@
-mod statests {
-    use quickersort;
+use quickersort;
     // Calculate the chi-squared value for the sample from the rng
-    pub fn rngchi(v: &Vec<f32>, b: u32) {
+    pub fn rngchi(v: &Vec<f32>, b: u32) -> f32 {
         let bins = bin(v, b);
         // now that we have 'binned' v into b bins 
         // calculate expected n*p(bin) for each bin
-
+        // expected value is 1/k*len(v) for each bin
+        let expected = (1.0f32/(b as f32)) * (v.len() as f32);
+        let mut chisquared = 0f32;
+        for binvalue in bins {
+            let k = ((binvalue as f32) - expected);
+            chisquared +=   ((k*k)/expected);
+        }
+        chisquared
     }
 
     // split the vector v in bins such that items from the vector
@@ -68,4 +74,4 @@ mod statests {
             assert_eq!(bins_count, vec![11, 10,  7, 11, 11, 11,  3, 14,  7, 15]);
         }
     }
-}
+

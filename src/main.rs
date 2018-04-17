@@ -1,4 +1,5 @@
 extern crate mt;
+use mt::statests;
 use std::num::Wrapping;
 struct MT {
     state : [u64; 624],
@@ -71,14 +72,13 @@ impl MT {
 
 fn main() {
     let mut y = MT{state: [0;624], index: 0};
+    let mut r = Vec::new();
     y.seed(4);
-    for i in 0..650 {
-        
-        let k = y.get();
-        println!("{}", k);
-        let k = y.get_real();
-        println!("{}", k);
-        }
+    for i in 0..100000 {
+       
+        r.push(y.get_real());
+    }
+    println!("{}", mt::statests::rngchi(&r, 10u32));
 }
         
 

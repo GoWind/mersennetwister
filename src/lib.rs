@@ -1,3 +1,3 @@
 extern crate quickersort;
-mod statests;
+pub mod statests;
 
