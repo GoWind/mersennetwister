@@ -74,4 +74,3 @@ use quickersort;
             assert_eq!(bins_count, vec![11, 10,  7, 11, 11, 11,  3, 14,  7, 15]);
         }
     }
-
